@@ -5,11 +5,15 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-contacts": "4.0.2",
     "react-native-navigation": "2.22.3",
     "react-redux": "^7.1.0",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"

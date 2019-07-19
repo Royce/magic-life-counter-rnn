@@ -1,11 +1,15 @@
 import React from "react";
 import { Navigation } from "react-native-navigation";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import CounterScreen from "./screens/CounterScreen";
-import rootReducer from "./rootReducer";
+import thunk from "redux-thunk";
 
-const store = createStore(rootReducer);
+import CounterScreen from "./screens/CounterScreen";
+import ContactsScreen from "./screens/ContactsScreen";
+import rootReducer from "./rootReducer";
+import { refresh } from "./contacts/actions";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function WrappedComponent(Component) {
   return function inject(props) {
@@ -25,14 +29,31 @@ Navigation.registerComponent(
   () => CounterScreen
 );
 
+Navigation.registerComponent(
+  `ContactsMenu`,
+  () => WrappedComponent(ContactsScreen),
+  () => ContactsScreen
+);
+
 export default function() {
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
       root: {
-        component: {
-          name: "WelcomeScreen"
+        sideMenu: {
+          right: {
+            component: {
+              name: "ContactsMenu"
+            }
+          },
+          center: {
+            component: {
+              name: "WelcomeScreen"
+            }
+          }
         }
       }
     });
+
+    store.dispatch(refresh());
   });
 }

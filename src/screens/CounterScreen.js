@@ -2,7 +2,9 @@ import React from "react";
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { connect } from "react-redux";
 
-function App({ counter, increment } = props) {
+import { increment } from "../counter/actions";
+
+function CounterScreen({ counter, increment } = props) {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
@@ -14,17 +16,13 @@ function App({ counter, increment } = props) {
 }
 
 function mapStateToProps(state) {
-  return { counter: state.counter };
-}
-
-function mapDispatchToProps(dispatch) {
-  return { increment: () => dispatch({ type: "increment" }) };
+  return { counter: state.counter.counter };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(App);
+  { increment }
+)(CounterScreen);
 
 const styles = StyleSheet.create({
   container: {

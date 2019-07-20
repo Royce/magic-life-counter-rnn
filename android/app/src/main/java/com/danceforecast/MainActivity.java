@@ -1,4 +1,4 @@
-package com.getsport;
+package com.danceforecast;
 
 import com.reactnativenavigation.NavigationActivity ;
 

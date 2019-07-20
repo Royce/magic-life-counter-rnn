@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "789391742026",
+    "firebase_url": "https://dance-forecast.firebaseio.com",
+    "project_id": "dance-forecast",
+    "storage_bucket": "dance-forecast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789391742026:android:bc4b1eece774368c",
+        "android_client_info": {
+          "package_name": "com.danceforecast.local"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789391742026-10a72o727h29522cobe2cdj341g48n66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLbzVDgnjlDVtq-lEudN2yvFoPKtq5Djw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789391742026-10a72o727h29522cobe2cdj341g48n66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

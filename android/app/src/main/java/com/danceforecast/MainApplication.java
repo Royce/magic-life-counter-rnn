@@ -1,4 +1,4 @@
-package com.getsport;
+package com.danceforecast;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -8,6 +8,8 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +36,9 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-      new ReactNativeContacts()
+            new RNFirebasePackage(),
+            new RNFirebaseCrashlyticsPackage(),
+            new ReactNativeContacts()
     );
   }
 

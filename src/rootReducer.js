@@ -1,11 +1,9 @@
 import { combineReducers } from "redux";
 
 import counter from "./counter/reducer";
-import contacts from "./contacts/reducer";
 
 const rootReducer = combineReducers({
-  counter,
-  contacts
+  counter
 });
 
 export default rootReducer;

@@ -7,9 +7,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
 import CounterScreen from "./screens/CounterScreen";
-import ContactsScreen from "./screens/ContactsScreen";
 import rootReducer from "./rootReducer";
-import { refresh } from "./contacts/actions";
 
 const persistedReducer = persistReducer(
   { key: "root", storage: AsyncStorage },
@@ -36,31 +34,14 @@ Navigation.registerComponent(
   () => CounterScreen
 );
 
-Navigation.registerComponent(
-  `ContactsMenu`,
-  () => WrappedComponent(ContactsScreen),
-  () => ContactsScreen
-);
-
 export default function() {
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
       root: {
-        sideMenu: {
-          right: {
-            component: {
-              name: "ContactsMenu"
-            }
-          },
-          center: {
-            component: {
-              name: "WelcomeScreen"
-            }
-          }
+        component: {
+          name: "WelcomeScreen"
         }
       }
     });
-
-    store.dispatch(refresh());
   });
 }

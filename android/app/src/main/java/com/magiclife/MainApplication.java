@@ -1,4 +1,4 @@
-package com.danceforecast;
+package com.magiclife;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -35,7 +35,7 @@ public class MainApplication extends NavigationApplication {
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
             new RNFirebasePackage(),
-            new RNFirebaseCrashlyticsPackage(),
+            new RNFirebaseCrashlyticsPackage()
     );
   }
 

@@ -1,4 +1,4 @@
-rootProject.name = 'Dance Forecast'
+rootProject.name = 'Magic Life'
 include ':react-native-firebase'
 project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
 

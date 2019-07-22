@@ -1,4 +1,4 @@
-package com.danceforecast;
+package com.magiclife;
 
 import com.reactnativenavigation.NavigationActivity ;
 

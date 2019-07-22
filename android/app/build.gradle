@@ -103,7 +103,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.danceforecast.local"
+        applicationId "com.magiclife.local"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"

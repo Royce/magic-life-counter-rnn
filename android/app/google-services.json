@@ -1,16 +1,16 @@
 {
   "project_info": {
     "project_number": "789391742026",
-    "firebase_url": "https://dance-forecast.firebaseio.com",
-    "project_id": "dance-forecast",
-    "storage_bucket": "dance-forecast.appspot.com"
+    "firebase_url": "https://magic-life.firebaseio.com",
+    "project_id": "magic-life",
+    "storage_bucket": "magic-life.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:789391742026:android:bc4b1eece774368c",
         "android_client_info": {
-          "package_name": "com.danceforecast.local"
+          "package_name": "com.magiclife.local"
         }
       },
       "oauth_client": [

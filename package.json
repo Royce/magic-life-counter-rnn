@@ -18,6 +18,11 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.6.1"
+  },
   "private": true
 }

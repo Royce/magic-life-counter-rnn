@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { increment, decrement } from '../counter/actions';
-import { CounterTile } from '../counter/CounterTile';
+import { CounterTile } from '../counter/components';
 
 function CounterScreen({ counter, increment, decrement }) {
   return (

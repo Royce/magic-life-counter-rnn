@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import { OutlineText } from '../components';
+import { OutlineText } from '../../components';
 
 function useButton(onPress) {
   const [pressed, setPressed] = useState(false);

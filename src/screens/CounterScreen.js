@@ -2,18 +2,30 @@ import React from "react";
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { connect } from "react-redux";
 
-import { increment } from "../counter/actions";
+import { increment, decrement } from "../counter/actions";
 import { CounterTile } from "../counter/CounterTile";
 
-function CounterScreen({ counter, increment } = props) {
+function CounterScreen({ counter, increment, decrement }) {
   return (
     <View style={styles.container}>
-      <CounterTile color={"red"} current={11} invert={true} />
+      <CounterTile
+        color={"red"}
+        current={counter}
+        increment={increment}
+        invert={true}
+      />
+
       <Text>Open up App.js to start working on your app!</Text>
       <TouchableHighlight onPress={increment}>
         <Text>Count: {counter}</Text>
       </TouchableHighlight>
-      <CounterTile color={"blue"} current={99} />
+
+      <CounterTile
+        color={"blue"}
+        current={counter}
+        increment={increment}
+        decrement={decrement}
+      />
     </View>
   );
 }
@@ -24,7 +36,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { increment }
+  { increment, decrement }
 )(CounterScreen);
 
 const styles = StyleSheet.create({

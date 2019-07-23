@@ -3,31 +3,7 @@ import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { connect } from "react-redux";
 
 import { increment } from "../counter/actions";
-import { OutlineText } from "../components";
-
-function CounterTile({ current, color, invert = false }) {
-  return (
-    <View
-      style={[
-        {
-          flex: 1,
-          backgroundColor: color,
-          alignSelf: "stretch",
-          alignItems: "center",
-          justifyContent: "center"
-        },
-        invert && { transform: [{ rotateX: "180deg" }, { rotateY: "180deg" }] }
-      ]}
-    >
-      <OutlineText
-        text={current}
-        style={{ color: "white", fontSize: 150, fontWeight: "700" }}
-        outlineColor={"black"}
-        outlineWidth={1}
-      />
-    </View>
-  );
-}
+import { CounterTile } from "../counter/CounterTile";
 
 function CounterScreen({ counter, increment } = props) {
   return (

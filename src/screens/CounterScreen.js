@@ -16,7 +16,7 @@ function CounterTile({ current, color, invert = false }) {
           alignItems: "center",
           justifyContent: "center"
         },
-        invert ? { transform: [{ rotateX: "180deg" }] } : null
+        invert && { transform: [{ rotateX: "180deg" }, { rotateY: "180deg" }] }
       ]}
     >
       <OutlineText

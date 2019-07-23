@@ -12,6 +12,7 @@ function CounterScreen({ counter, increment, decrement }) {
         color={'red'}
         current={counter}
         increment={increment}
+        decrement={decrement}
         invert={true}
       />
 

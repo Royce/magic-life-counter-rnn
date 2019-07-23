@@ -1,15 +1,15 @@
-import React from "react";
-import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
-import { connect } from "react-redux";
+import React from 'react';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { connect } from 'react-redux';
 
-import { increment, decrement } from "../counter/actions";
-import { CounterTile } from "../counter/CounterTile";
+import { increment, decrement } from '../counter/actions';
+import { CounterTile } from '../counter/CounterTile';
 
 function CounterScreen({ counter, increment, decrement }) {
   return (
     <View style={styles.container}>
       <CounterTile
-        color={"red"}
+        color={'red'}
         current={counter}
         increment={increment}
         invert={true}
@@ -21,7 +21,7 @@ function CounterScreen({ counter, increment, decrement }) {
       </TouchableHighlight>
 
       <CounterTile
-        color={"blue"}
+        color={'blue'}
         current={counter}
         increment={increment}
         decrement={decrement}
@@ -42,8 +42,8 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

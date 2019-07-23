@@ -1,16 +1,16 @@
-import React from "react";
-import { AsyncStorage } from "react-native";
-import { Navigation } from "react-native-navigation";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import { persistStore, persistReducer } from "redux-persist";
-import thunk from "redux-thunk";
+import React from 'react';
+import { AsyncStorage } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import thunk from 'redux-thunk';
 
-import CounterScreen from "./screens/CounterScreen";
-import rootReducer from "./rootReducer";
+import CounterScreen from './screens/CounterScreen';
+import rootReducer from './rootReducer';
 
 const persistedReducer = persistReducer(
-  { key: "root", storage: AsyncStorage },
+  { key: 'root', storage: AsyncStorage },
   rootReducer
 );
 const store = createStore(persistedReducer, applyMiddleware(thunk));
@@ -39,9 +39,9 @@ export default function() {
     Navigation.setRoot({
       root: {
         component: {
-          name: "WelcomeScreen"
-        }
-      }
+          name: 'WelcomeScreen',
+        },
+      },
     });
   });
 }

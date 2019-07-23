@@ -1,15 +1,15 @@
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import { Text } from 'react-native';
 
 export function OutlineText({ text, style, outlineWidth, outlineColor }) {
   var textIndex = 0;
   const getStyle = function(x, y) {
     return {
       ...style,
-      position: textIndex++ === 1 ? "relative" : "absolute",
+      position: textIndex++ === 1 ? 'relative' : 'absolute',
       textShadowColor: outlineColor,
       textShadowRadius: outlineWidth,
-      textShadowOffset: { width: outlineWidth * x, height: outlineWidth * y }
+      textShadowOffset: { width: outlineWidth * x, height: outlineWidth * y },
     };
   };
 

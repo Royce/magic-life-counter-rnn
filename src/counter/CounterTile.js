@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
-import { TouchableWithoutFeedback, View } from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
+import React, { useState, useCallback } from 'react';
+import { TouchableWithoutFeedback, View } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
-import { OutlineText } from "../components";
+import { OutlineText } from '../components';
 
 function useButton(onPress) {
   const [pressed, setPressed] = useState(false);
@@ -26,14 +26,14 @@ function PlusButton({ onPress }) {
     <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
       <View
         style={{
-          position: "absolute",
+          position: 'absolute',
           right: 0,
           // backgroundColor: "pink",
           padding: 30,
-          paddingRight: 10
+          paddingRight: 10,
         }}
       >
-        <Icon name="plus" size={80} color={pressed ? "#fffc" : "white"} />
+        <Icon name="plus" size={80} color={pressed ? '#fffc' : 'white'} />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -46,14 +46,14 @@ function MinusButton({ onPress }) {
     <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
       <View
         style={{
-          position: "absolute",
+          position: 'absolute',
           left: 0,
           // backgroundColor: "pink",
           padding: 30,
-          paddingLeft: 10
+          paddingLeft: 10,
         }}
       >
-        <Icon name="minus" size={80} color={pressed ? "#fffc" : "white"} />
+        <Icon name="minus" size={80} color={pressed ? '#fffc' : 'white'} />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -64,7 +64,7 @@ export function CounterTile({
   color,
   increment,
   decrement,
-  invert = false
+  invert = false,
 }) {
   return (
     <View
@@ -72,19 +72,19 @@ export function CounterTile({
         {
           flex: 1,
           backgroundColor: color,
-          alignSelf: "stretch",
-          alignItems: "center",
-          justifyContent: "center"
+          alignSelf: 'stretch',
+          alignItems: 'center',
+          justifyContent: 'center',
         },
-        invert && { transform: [{ rotateX: "180deg" }, { rotateY: "180deg" }] }
+        invert && { transform: [{ rotateX: '180deg' }, { rotateY: '180deg' }] },
       ]}
     >
       <PlusButton onPress={increment} />
       <MinusButton onPress={decrement} />
       <OutlineText
         text={current}
-        style={{ color: "white", fontSize: 150, fontWeight: "700" }}
-        outlineColor={"black"}
+        style={{ color: 'white', fontSize: 150, fontWeight: '700' }}
+        outlineColor={'black'}
         outlineWidth={1}
       />
     </View>

@@ -1,1 +1,1 @@
-export { OutlineText } from "./OutlineText";
+export { OutlineText } from './OutlineText';

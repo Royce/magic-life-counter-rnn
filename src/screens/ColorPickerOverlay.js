@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
-import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
 import { ColorPicker } from '../settings/components/ColorPicker';
@@ -17,12 +16,7 @@ function ColorPickerOverlay({ player, componentId }) {
   );
 }
 
-export default connect(
-  function mapStateToProps(state) {
-    return {};
-  },
-  {}
-)(ColorPickerOverlay);
+export default ColorPickerOverlay;
 
 const styles = StyleSheet.create({
   container: {

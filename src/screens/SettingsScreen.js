@@ -7,9 +7,6 @@ import { getColorMap } from '../settings/selectors';
 import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 import { ColorDot } from '../components';
 
-// import { increment, decrement } from '../counter/actions';
-// import { CounterTile } from '../counter/components';
-
 function Heading({ children }) {
   return (
     <View
@@ -76,7 +73,7 @@ function SettingsScreen({ colorMap }) {
 }
 
 function mapStateToProps(state) {
-  return { counter: state.counter.counter, colorMap: getColorMap(state) };
+  return { colorMap: getColorMap(state) };
 }
 
 export default connect(

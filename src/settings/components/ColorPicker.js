@@ -10,12 +10,7 @@ import { AVAILABLE_COLORS } from '../constants';
 import { getColorMap } from '../selectors';
 import { setColorForPlayer } from '../actions';
 
-export const ColorPicker = connect(
-  function mapStateToProps(state) {
-    return { colorMap: getColorMap(state) };
-  },
-  { setColorForPlayer }
-)(function ColorPicker({ player, colorMap, setColorForPlayer, onClose }) {
+function ColorPicker({ player, colorMap, setColorForPlayer, onClose }) {
   const selected = colorMap[player];
   const unavailable = colorMap[otherPlayer(player)];
 
@@ -53,7 +48,16 @@ export const ColorPicker = connect(
       })}
     </View>
   );
-});
+}
+
+const _ColorPicker = connect(
+  function mapStateToProps(state) {
+    return { colorMap: getColorMap(state) };
+  },
+  { setColorForPlayer }
+)(ColorPicker);
+
+export { _ColorPicker as ColorPicker };
 
 function ColorPickerButton({ color, selected, disabled, onPress }) {
   const [pressed, onPressIn, onPressOut] = useButtonPress(onPress);

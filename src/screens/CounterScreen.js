@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 
 import { increment, decrement } from '../counter/actions';
 import { CounterTile } from '../counter/components';
+import { getColorMap } from '../settings/selectors';
+import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 
-function CounterScreen({ counter, increment, decrement }) {
+function CounterScreen({ counter, increment, decrement, colorMap }) {
   return (
     <View style={styles.container}>
       <CounterTile
-        color={'red'}
+        color={colorMap[PLAYER_TWO]}
         current={counter}
         increment={increment}
         decrement={decrement}
@@ -22,7 +24,7 @@ function CounterScreen({ counter, increment, decrement }) {
       </TouchableHighlight>
 
       <CounterTile
-        color={'blue'}
+        color={colorMap[PLAYER_ONE]}
         current={counter}
         increment={increment}
         decrement={decrement}
@@ -32,7 +34,7 @@ function CounterScreen({ counter, increment, decrement }) {
 }
 
 function mapStateToProps(state) {
-  return { counter: state.counter.counter };
+  return { counter: state.counter.counter, colorMap: getColorMap(state) };
 }
 
 export default connect(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Dimensions } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -7,6 +7,8 @@ import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import CounterScreen from './screens/CounterScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import ColorPickerOverlay from './screens/ColorPickerOverlay';
 import rootReducer from './rootReducer';
 
 const persistedReducer = persistReducer(
@@ -34,12 +36,41 @@ Navigation.registerComponent(
   () => CounterScreen
 );
 
+Navigation.registerComponent(
+  `SettingsScreen`,
+  () => WrappedComponent(SettingsScreen),
+  () => SettingsScreen
+);
+
+Navigation.registerComponent(
+  `ColorPickerOverlay`,
+  () => WrappedComponent(ColorPickerOverlay),
+  () => ColorPickerOverlay
+);
+
 export default function() {
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
       root: {
-        component: {
-          name: 'WelcomeScreen',
+        sideMenu: {
+          options: {
+            statusBar: {
+              style: 'light',
+            },
+            sideMenu: {
+              left: { width: Dimensions.get('window').width - 40 },
+            },
+          },
+          left: {
+            component: {
+              name: 'SettingsScreen',
+            },
+          },
+          center: {
+            component: {
+              name: 'WelcomeScreen',
+            },
+          },
         },
       },
     });

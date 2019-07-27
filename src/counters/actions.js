@@ -5,3 +5,7 @@ export function increment(player) {
 export function decrement(player) {
   return { type: 'decrement', player };
 }
+
+export function reset() {
+  return { type: 'reset' };
+}

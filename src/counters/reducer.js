@@ -10,6 +10,9 @@ const reducer = (state = initialState, action) => {
     case 'decrement': {
       return { ...state, [action.player]: state[action.player] - 1 };
     }
+    case 'reset': {
+      return { ...state, ...initialState };
+    }
     default: {
       return state;
     }

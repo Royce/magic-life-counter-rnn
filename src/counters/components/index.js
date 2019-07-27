@@ -1,1 +1,2 @@
-export { CounterTile } from './CounterTile';
+export * from './CounterTile';
+export * from './ResetButton';

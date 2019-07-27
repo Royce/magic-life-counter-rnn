@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { CounterTile, ResetButton } from '../counters/components';
+import { RollStartingPlayerButton } from '../startingPlayer/components';
 import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 
 function CounterScreen() {
@@ -18,6 +19,8 @@ function CounterScreen() {
         }}
       >
         <ResetButton />
+        <View style={{ width: 30 }} />
+        <RollStartingPlayerButton />
       </View>
       <CounterTile player={PLAYER_ONE} />
     </View>

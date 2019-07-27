@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import CounterScreen from './screens/CounterScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import ColorPickerOverlay from './screens/ColorPickerOverlay';
+import StartingPlayerOverlay from './screens/StartingPlayerOverlay';
 import rootReducer from './rootReducer';
 
 const persistedReducer = persistReducer(
@@ -46,6 +47,12 @@ Navigation.registerComponent(
   `ColorPickerOverlay`,
   () => WrappedComponent(ColorPickerOverlay),
   () => ColorPickerOverlay
+);
+
+Navigation.registerComponent(
+  `StartingPlayerOverlay`,
+  () => WrappedComponent(StartingPlayerOverlay),
+  () => StartingPlayerOverlay
 );
 
 export default function() {

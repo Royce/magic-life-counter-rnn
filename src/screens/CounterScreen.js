@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { CounterTile } from '../counter/components';
+import { CounterTile } from '../counters/components';
 import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 
 function CounterScreen() {

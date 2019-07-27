@@ -23,22 +23,9 @@ function Heading({ children }) {
   );
 }
 
-function ColorMenuItem({ text, color }) {
+function ColorMenuItem({ text, color, onPress }) {
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Navigation.showOverlay({
-          component: {
-            name: 'ColorPickerOverlay',
-            options: {
-              overlay: {
-                interceptTouchOutside: true,
-              },
-            },
-          },
-        });
-      }}
-    >
+    <TouchableWithoutFeedback onPress={onPress}>
       <View
         style={[
           styles.borderBottom,
@@ -60,13 +47,30 @@ function ColorMenuItem({ text, color }) {
 
 const padding = 30;
 
+function showColorPicker(player) {
+  Navigation.showOverlay({
+    component: {
+      name: 'ColorPickerOverlay',
+      passProps: { player },
+    },
+  });
+}
+
 function SettingsScreen({ colorMap }) {
   return (
     <View style={styles.container}>
       <View height={40} />
       <Heading>Settings</Heading>
-      <ColorMenuItem text={'Opponent color'} color={colorMap[PLAYER_TWO]} />
-      <ColorMenuItem text={'Your color'} color={colorMap[PLAYER_ONE]} />
+      <ColorMenuItem
+        text={'Opponent color'}
+        color={colorMap[PLAYER_TWO]}
+        onPress={() => showColorPicker(PLAYER_TWO)}
+      />
+      <ColorMenuItem
+        text={'Your color'}
+        color={colorMap[PLAYER_ONE]}
+        onPress={() => showColorPicker(PLAYER_ONE)}
+      />
     </View>
   );
 }

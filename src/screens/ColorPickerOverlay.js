@@ -3,16 +3,15 @@ import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
-import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 import { ColorPicker } from '../settings/components/ColorPicker';
 
-function ColorPickerOverlay({ componentId }) {
+function ColorPickerOverlay({ player, componentId }) {
   const dismiss = () => Navigation.dismissOverlay(componentId);
 
   return (
     <TouchableWithoutFeedback onPress={dismiss}>
       <View style={styles.container}>
-        <ColorPicker player={PLAYER_TWO} onClose={dismiss} />
+        <ColorPicker player={player} onClose={dismiss} />
       </View>
     </TouchableWithoutFeedback>
   );

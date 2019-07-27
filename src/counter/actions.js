@@ -1,7 +1,7 @@
-export function increment() {
-  return { type: 'increment' };
+export function increment(player) {
+  return { type: 'increment', player };
 }
 
-export function decrement() {
-  return { type: 'decrement' };
+export function decrement(player) {
+  return { type: 'decrement', player };
 }

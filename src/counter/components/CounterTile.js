@@ -1,26 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { connect } from 'react-redux';
 
-import { OutlineText } from '../../components';
-
-function useButton(onPress) {
-  const [pressed, setPressed] = useState(false);
-
-  const onPressIn = useCallback(() => {
-    setPressed(true);
-    onPress();
-  }, [onPress]);
-
-  const onPressOut = useCallback(() => {
-    setPressed(false);
-  }, []);
-
-  return [pressed, onPressIn, onPressOut];
-}
+import { OutlineText, useButtonPressEager } from '../../components';
+import { getColorMap } from '../../settings/selectors';
+import { decrement, increment } from '../actions';
+import { getCounter } from '../selectors';
 
 function PlusButton({ onPress }) {
-  const [pressed, onPressIn, onPressOut] = useButton(onPress);
+  const [pressed, onPressIn, onPressOut] = useButtonPressEager(onPress);
 
   return (
     <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
@@ -40,7 +29,7 @@ function PlusButton({ onPress }) {
 }
 
 function MinusButton({ onPress }) {
-  const [pressed, onPressIn, onPressOut] = useButton(onPress);
+  const [pressed, onPressIn, onPressOut] = useButtonPressEager(onPress);
 
   return (
     <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
@@ -59,13 +48,7 @@ function MinusButton({ onPress }) {
   );
 }
 
-export function CounterTile({
-  current,
-  color,
-  increment,
-  decrement,
-  invert = false,
-}) {
+function CounterTile({ counter, color, increment, decrement, invert = false }) {
   return (
     <View
       style={[
@@ -82,7 +65,7 @@ export function CounterTile({
       <PlusButton onPress={increment} />
       <MinusButton onPress={decrement} />
       <OutlineText
-        text={current}
+        text={counter}
         style={{ color: 'white', fontSize: 150, fontWeight: '700' }}
         outlineColor={'black'}
         outlineWidth={1}
@@ -90,3 +73,21 @@ export function CounterTile({
     </View>
   );
 }
+
+const _CounterTile = connect(
+  function mapStateToProps(state, { player }) {
+    const colorMap = getColorMap(state);
+    const color = colorMap[player];
+    const counter = getCounter(state, player);
+
+    return { color, counter };
+  },
+  function mapDispatchToProps(dispatch, { player }) {
+    return {
+      increment: () => dispatch(increment(player)),
+      decrement: () => dispatch(decrement(player)),
+    };
+  }
+)(CounterTile);
+
+export { _CounterTile as CounterTile };

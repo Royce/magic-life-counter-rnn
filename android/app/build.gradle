@@ -103,7 +103,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.magiclife.local"
+        applicationId "com.roycetownsend.magic_life"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"

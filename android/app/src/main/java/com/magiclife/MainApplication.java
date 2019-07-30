@@ -10,6 +10,7 @@ import com.reactnativenavigation.react.ReactGateway;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +20,18 @@ public class MainApplication extends NavigationApplication {
   @Override
   protected ReactGateway createReactGateway() {
     ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+      @javax.annotation.Nullable
+      @Override
+      protected String getJSBundleFile() {
+          return CodePush.getJSBundleFile();
+      }
+
       @Override
       protected String getJSMainModuleName() {
         return "index";
       }
     };
+
     return new ReactGateway(this, isDebug(), host);
   }
 
@@ -38,7 +46,8 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
             new RNFirebasePackage(),
             new RNFirebaseCrashlyticsPackage(),
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new CodePush(BuildConfig.CODE_PUSH_API_KEY, MainApplication.this, BuildConfig.DEBUG)
     );
   }
 

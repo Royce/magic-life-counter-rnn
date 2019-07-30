@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
+import { checkForUpdates } from './versions/actions';
+
 import CounterScreen from './screens/CounterScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import ColorPickerOverlay from './screens/ColorPickerOverlay';
@@ -81,5 +83,7 @@ export default function() {
         },
       },
     });
+
+    store.dispatch(checkForUpdates());
   });
 }

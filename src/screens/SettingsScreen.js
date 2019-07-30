@@ -6,6 +6,7 @@ import { Navigation } from 'react-native-navigation';
 import { getColorMap } from '../settings/selectors';
 import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 import { ColorDot } from '../components';
+import { VersionMenuItem } from '../versions/components/VersionMenuItem';
 
 function Heading({ children }) {
   return (
@@ -68,6 +69,7 @@ function SettingsScreen({ colorMap }) {
         color={colorMap[PLAYER_ONE]}
         onPress={() => showColorPicker(PLAYER_ONE)}
       />
+      <VersionMenuItem />
     </View>
   );
 }

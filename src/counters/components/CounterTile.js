@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { OutlineText, useButtonPressEager } from '../../components';
 import { getColorMap } from '../../settings/selectors';
 import { decrement, increment } from '../actions';
-import { getCurrent, getTemp, getHistoryString } from '../selectors';
+import { getNextTotal, getTemp, getHistoryString } from '../selectors';
 
 function PlusButton({ onPress }) {
   const [pressed, onPressIn, onPressOut] = useButtonPressEager(onPress);
@@ -109,7 +109,7 @@ const _CounterTile = connect(
   function mapStateToProps(state, { player }) {
     const colorMap = getColorMap(state);
     const color = colorMap[player];
-    const current = getCurrent(state, player);
+    const current = getNextTotal(state, player);
     const temp = getTemp(state, player);
     const history = getHistoryString(state, player);
 

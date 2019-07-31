@@ -3,7 +3,11 @@ import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { connect } from 'react-redux';
 
-import { OutlineText, useButtonPressEager } from '../../components';
+import {
+  OutlineText,
+  numberAsStringWithExplicitSign,
+  useButtonPressEager,
+} from '../../components';
 import { getColorMap } from '../../settings/selectors';
 import { decrement, increment } from '../actions';
 import { getNextTotal, getTemp, getHistoryString } from '../selectors';
@@ -57,9 +61,6 @@ function CounterTile({
   decrement,
   invert = false,
 }) {
-  const tempStringWithExplicitUnaryOperator =
-    temp === 0 ? null : temp > 0 ? `+${temp.toString()}` : temp.toString();
-
   return (
     <View
       style={[
@@ -85,16 +86,18 @@ function CounterTile({
       >
         {history}
       </Text>
-      <Text
-        style={{
-          position: 'absolute',
-          color: '#ccc',
-          paddingBottom: 160,
-          fontSize: 40,
-        }}
-      >
-        {tempStringWithExplicitUnaryOperator}
-      </Text>
+      {temp !== 0 && (
+        <Text
+          style={{
+            position: 'absolute',
+            color: '#ccc',
+            paddingBottom: 160,
+            fontSize: 40,
+          }}
+        >
+          {numberAsStringWithExplicitSign(temp)}
+        </Text>
+      )}
       <OutlineText
         text={current}
         style={{ color: 'white', fontSize: 150, fontWeight: '700' }}

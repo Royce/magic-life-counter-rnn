@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { numberAsStringWithExplicitSign } from '../components';
 
 const getCounters = state => state.counters;
 
@@ -34,9 +35,13 @@ export const getHistoryString = createSelector(
   getPlayer,
   (counters, player) => {
     const items = counters[player].history;
-    return items.length > MAX_VISIBLE_HISTORY_ITEMS
-      ? '... ' +
-          items.slice(items.length - MAX_VISIBLE_HISTORY_ITEMS).join(', ')
-      : items.join(', ');
+    const visibleItems =
+      items.length > MAX_VISIBLE_HISTORY_ITEMS
+        ? items.slice(items.length - MAX_VISIBLE_HISTORY_ITEMS)
+        : items;
+    return (
+      (items.length > MAX_VISIBLE_HISTORY_ITEMS ? '... ' : '') +
+      visibleItems.map(numberAsStringWithExplicitSign).join(', ')
+    );
   }
 );

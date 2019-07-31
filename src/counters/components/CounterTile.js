@@ -88,9 +88,9 @@ function CounterTile({
       <Text
         style={{
           position: 'absolute',
-          color: 'white',
-          paddingBottom: 150,
-          fontSize: 30,
+          color: '#ccc',
+          paddingBottom: 160,
+          fontSize: 40,
         }}
       >
         {tempStringWithExplicitUnaryOperator}

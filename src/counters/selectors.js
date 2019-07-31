@@ -34,6 +34,9 @@ export const getHistoryString = createSelector(
   getPlayer,
   (counters, player) => {
     const items = counters[player].history;
-    return items.join(', ');
+    return items.length > MAX_VISIBLE_HISTORY_ITEMS
+      ? '... ' +
+          items.slice(items.length - MAX_VISIBLE_HISTORY_ITEMS).join(', ')
+      : items.join(', ');
   }
 );

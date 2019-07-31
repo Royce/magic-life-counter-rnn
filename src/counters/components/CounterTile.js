@@ -1,12 +1,12 @@
 import React from 'react';
-import { TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { connect } from 'react-redux';
 
 import { OutlineText, useButtonPressEager } from '../../components';
 import { getColorMap } from '../../settings/selectors';
 import { decrement, increment } from '../actions';
-import { getCounter } from '../selectors';
+import { getCurrent, getTemp, getHistoryString } from '../selectors';
 
 function PlusButton({ onPress }) {
   const [pressed, onPressIn, onPressOut] = useButtonPressEager(onPress);
@@ -48,7 +48,18 @@ function MinusButton({ onPress }) {
   );
 }
 
-function CounterTile({ counter, color, increment, decrement, invert = false }) {
+function CounterTile({
+  current,
+  temp,
+  history,
+  color,
+  increment,
+  decrement,
+  invert = false,
+}) {
+  const tempStringWithExplicitUnaryOperator =
+    temp === 0 ? null : temp > 0 ? `+${temp.toString()}` : temp.toString();
+
   return (
     <View
       style={[
@@ -64,8 +75,28 @@ function CounterTile({ counter, color, increment, decrement, invert = false }) {
     >
       <PlusButton onPress={increment} />
       <MinusButton onPress={decrement} />
+      <Text
+        style={{
+          position: 'absolute',
+          top: 15,
+          color: '#999',
+          fontSize: 20,
+        }}
+      >
+        {history}
+      </Text>
+      <Text
+        style={{
+          position: 'absolute',
+          color: 'white',
+          paddingBottom: 150,
+          fontSize: 30,
+        }}
+      >
+        {tempStringWithExplicitUnaryOperator}
+      </Text>
       <OutlineText
-        text={counter}
+        text={current}
         style={{ color: 'white', fontSize: 150, fontWeight: '700' }}
         outlineColor={'black'}
         outlineWidth={1}
@@ -78,9 +109,11 @@ const _CounterTile = connect(
   function mapStateToProps(state, { player }) {
     const colorMap = getColorMap(state);
     const color = colorMap[player];
-    const counter = getCounter(state, player);
+    const current = getCurrent(state, player);
+    const temp = getTemp(state, player);
+    const history = getHistoryString(state, player);
 
-    return { color, counter };
+    return { color, current, temp, history };
   },
   function mapDispatchToProps(dispatch, { player }) {
     return {

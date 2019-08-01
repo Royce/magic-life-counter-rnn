@@ -7,6 +7,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import { checkForUpdates } from './versions/actions';
+import KeepAwake from 'react-native-keep-awake';
 
 import CounterScreen from './screens/CounterScreen';
 import SettingsScreen from './screens/SettingsScreen';
@@ -85,5 +86,6 @@ export default function() {
     });
 
     store.dispatch(checkForUpdates());
+    KeepAwake.activate();
   });
 }

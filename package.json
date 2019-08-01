@@ -12,6 +12,7 @@
     "react-native": "0.59.8",
     "react-native-code-push": "^5.6.1",
     "react-native-firebase": "^5.5.5",
+    "react-native-keep-awake": "^4.0.0",
     "react-native-navigation": "2.22.3",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.1.0",

@@ -11,6 +11,7 @@ import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.microsoft.codepush.react.CodePush;
+import com.corbt.keepawake.KCKeepAwakePackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +48,8 @@ public class MainApplication extends NavigationApplication {
             new RNFirebasePackage(),
             new RNFirebaseCrashlyticsPackage(),
             new VectorIconsPackage(),
-            new CodePush(BuildConfig.CODE_PUSH_API_KEY, MainApplication.this, BuildConfig.DEBUG)
+            new CodePush(BuildConfig.CODE_PUSH_API_KEY, MainApplication.this, BuildConfig.DEBUG),
+            new KCKeepAwakePackage()
     );
   }
 

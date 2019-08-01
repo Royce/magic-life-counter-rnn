@@ -121,11 +121,15 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('MLC_UPLOAD_STORE_FILE')) {
-                storeFile file(MLC_UPLOAD_STORE_FILE)
-                storePassword MLC_UPLOAD_STORE_PASSWORD
-                keyAlias MLC_UPLOAD_KEY_ALIAS
-                keyPassword MLC_UPLOAD_KEY_PASSWORD
+            def certificatePath = project.hasProperty('MLC_UPLOAD_STORE_FILE') ? MLC_UPLOAD_STORE_FILE : System.getenv("MLC_UPLOAD_STORE_FILE")
+            if (file(certificatePath).exists()) {
+                storeFile file(certificatePath)
+                storePassword project.hasProperty('MLC_UPLOAD_STORE_PASSWORD') ? MLC_UPLOAD_STORE_PASSWORD : System.getenv("MLC_UPLOAD_STORE_PASSWORD")
+                keyAlias project.hasProperty('MLC_UPLOAD_KEY_ALIAS') ? MLC_UPLOAD_KEY_ALIAS : System.getenv("MLC_UPLOAD_KEY_ALIAS")
+                keyPassword project.hasProperty('MLC_UPLOAD_KEY_PASSWORD') ? MLC_UPLOAD_KEY_PASSWORD : System.getenv("MLC_UPLOAD_KEY_PASSWORD")
+            }
+            else {
+                logger.error("You need to define MLC_UPLOAD_STORE_FILE currently:" + certificatePath)
             }
         }
     }

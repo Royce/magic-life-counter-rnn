@@ -1,0 +1,60 @@
+# Android
+# Build your Android project with Gradle.
+# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+trigger:
+  - master
+
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+  - task: DownloadSecureFile@1
+    displayName: 'Download playstore signing certificate'
+    name: 'uploadCertificate'
+    inputs:
+      secureFile: 'mlc-playstore-key.jks'
+  - task: UseNode@1
+    displayName: 'Use node 10.x'
+    inputs:
+      version: '10.x'
+  - task: Bash@3
+    displayName: 'Install node modules'
+    inputs:
+      targetType: 'inline'
+      script: 'yarn'
+  - task: Gradle@2
+    env:
+      MLC_UPLOAD_STORE_FILE: $(uploadCertificate.secureFilePath)
+      MLC_UPLOAD_KEY_ALIAS: $(MLC_UPLOAD_KEY_ALIAS)
+      MLC_UPLOAD_STORE_PASSWORD: $(MLC_UPLOAD_STORE_PASSWORD)
+      MLC_UPLOAD_KEY_PASSWORD: $(MLC_UPLOAD_KEY_PASSWORD)
+    displayName: 'Android QA release'
+    inputs:
+      workingDirectory: 'android'
+      gradleWrapperFile: 'android/gradlew'
+      gradleOptions: '-Xmx3072m'
+      publishJUnitResults: false
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'assembleQaRelease'
+  - task: CopyFiles@2
+    displayName: 'Copy build artifacts'
+    inputs:
+      SourceFolder: 'android'
+      Contents: |
+        app/build/outputs/apk/**/app-qa-release.apk
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+  - task: CopyFiles@2
+    displayName: 'Copy metadata'
+    enabled: false
+    inputs:
+      SourceFolder: 'android/metadata'
+      Contents: '**'
+      TargetFolder: '$(build.artifactstagingdirectory)/android/metadata'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'android'
+      publishLocation: 'Container'

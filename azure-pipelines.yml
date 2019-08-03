@@ -15,6 +15,9 @@ steps:
     name: 'uploadCertificate'
     inputs:
       secureFile: 'mlc-playstore-key.jks'
+  - task: GitVersion@5
+    inputs:
+      runtime: 'core'
   - task: UseNode@1
     displayName: 'Use node 10.x'
     inputs:
@@ -38,6 +41,7 @@ steps:
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'assembleQaRelease'
+      options: '-PversionCode=$(GitVersion.BuildMetaData) -PversionName=$(GitVersion.Major).$(GitVersion.Minor)'
   - task: CopyFiles@2
     displayName: 'Copy build artifacts'
     inputs:

@@ -95,6 +95,18 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def getVersionCode = { ->
+    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 2
+    println "VersionCode is set to $code"
+    return code
+}
+
+def getVersionName = { ->
+    def code = project.hasProperty('versionName') ? versionName : "2.0"
+    println "VersionName is set to $code"
+    return code
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -108,8 +120,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
-        versionCode 1
-        versionName "1.0"
+        versionCode getVersionCode()
+        versionName getVersionName()
     }
     splits {
         abi {

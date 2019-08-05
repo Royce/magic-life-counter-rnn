@@ -18,6 +18,21 @@ steps:
   - task: GitVersion@5
     inputs:
       runtime: 'core'
+  - task: gittagloader@1
+    displayName: 'Read versionCode-* tag'
+    inputs:
+      filter: 'versionCode*'
+      lines: '1'
+      prefix: 'VersionCode'
+  - task: Bash@3
+    displayName: 'Parse versionCode-* tag, and incr.'
+    inputs:
+      targetType: 'inline'
+      script: |
+        VersionCode=$(echo "$(VersionCodeTag.Label)" | cut -d "-" -f 2)
+        VersionCode=$((VersionCode + 1))
+        echo '$(VersionCodeTag.Label) -> '$VersionCode
+        echo '##vso[task.setvariable variable=VersionCode;]'$VersionCode
   - task: UseNode@1
     displayName: 'Use node 10.x'
     inputs:
@@ -41,7 +56,7 @@ steps:
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'assembleQaRelease'
-      options: '-PversionCode=$(GitVersion.BuildMetaData) -PversionName=$(GitVersion.Major).$(GitVersion.Minor)'
+      options: '-PversionCode=$(VersionCode) -PversionName=$(GitVersion.Major).$(GitVersion.Minor)'
   - task: CopyFiles@2
     displayName: 'Copy build artifacts'
     inputs:

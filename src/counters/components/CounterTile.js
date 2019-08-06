@@ -20,10 +20,9 @@ function PlusButton({ onPress }) {
       <View
         style={{
           position: 'absolute',
-          right: 0,
-          // backgroundColor: "pink",
-          padding: 30,
-          paddingRight: 10,
+          right: 10,
+          padding: 40,
+          paddingRight: 0,
         }}
       >
         <Icon name="plus" size={80} color={pressed ? '#fffc' : 'white'} />
@@ -40,10 +39,9 @@ function MinusButton({ onPress }) {
       <View
         style={{
           position: 'absolute',
-          left: 0,
-          // backgroundColor: "pink",
-          padding: 30,
-          paddingLeft: 10,
+          left: 10,
+          padding: 40,
+          paddingLeft: 0,
         }}
       >
         <Icon name="minus" size={80} color={pressed ? '#fffc' : 'white'} />

@@ -69,6 +69,8 @@ PODS:
   - nanopb/encode (0.3.901)
   - React (0.59.8):
     - React/Core (= 0.59.8)
+  - react-native-keep-awake (4.0.0):
+    - React
   - React/Core (0.59.8):
     - yoga (= 0.59.8.React)
   - React/CxxBridge (0.59.8):
@@ -122,6 +124,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -159,6 +162,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-keep-awake:
+    :path: "../node_modules/react-native-keep-awake"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   yoga:
@@ -182,10 +187,11 @@ SPEC CHECKSUMS:
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
+  react-native-keep-awake: 0de4bd66de0c23178107dce0c2fcc3354b2a8e94
   RNVectorIcons: 66af4d5c8ff4f584c7b7cd9c4b0780920f27fce2
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 323274522dcc1e8430a7460720495325c736bedc
+PODFILE CHECKSUM: 32c251040223af32e4ead23f8ded67201a519345
 
 COCOAPODS: 1.5.2

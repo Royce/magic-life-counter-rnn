@@ -1,4 +1,5 @@
 import CodePush from 'react-native-code-push';
+import DeviceInfo from 'react-native-device-info';
 
 import {
   CODE_PUSH_STATUS,
@@ -10,6 +11,7 @@ import {
 
 export function checkForUpdates({ manual = false } = {}) {
   return async function(dispatch, getState) {
+    dispatch(setAppVersion(DeviceInfo.getVersion()));
     CodePush.sync(
       {
         installMode: CodePush.InstallMode.ON_NEXT_RESUME,
@@ -59,7 +61,7 @@ function codePushStatusDidChange(status) {
         CodePush.getUpdateMetadata().then(update => {
           if (update) {
             console.log('Up to date: ' + update.description);
-            dispatch(setAppVersion(update.description));
+            // dispatch(setAppVersion(update.description));
           } else {
             console.log('Up to date, latest binary.');
           }

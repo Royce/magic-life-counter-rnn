@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import CodePush from 'react-native-code-push';
+import moment from 'moment';
 
 import {
   CODE_PUSH_STATUS,
@@ -11,7 +12,21 @@ import {
 
 const getVersions = state => state.versions;
 
-const getStatus = createSelector(
+export const getAppVersion = createSelector(
+  getVersions,
+  all => {
+    return all[APP_VERSION];
+  }
+);
+
+export const getPendingAppVersion = createSelector(
+  getVersions,
+  all => {
+    return all[PENDING_VERSION];
+  }
+);
+
+export const getStatus = createSelector(
   getVersions,
   all => {
     switch (all[CODE_PUSH_STATUS]) {
@@ -26,6 +41,13 @@ const getStatus = createSelector(
       default:
         break;
     }
+  }
+);
+
+export const getDurationSinceLastCheck = createSelector(
+  getVersions,
+  all => {
+    return moment(all[LAST_CHECK]).fromNow();
   }
 );
 

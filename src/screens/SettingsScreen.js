@@ -57,19 +57,22 @@ function showColorPicker(player) {
 function SettingsScreen({ colorMap }) {
   return (
     <View style={styles.container}>
-      <View height={40} />
-      <Heading>Settings</Heading>
-      <ColorMenuItem
-        text={'Opponent color'}
-        color={colorMap[PLAYER_TWO]}
-        onPress={() => showColorPicker(PLAYER_TWO)}
-      />
-      <ColorMenuItem
-        text={'Your color'}
-        color={colorMap[PLAYER_ONE]}
-        onPress={() => showColorPicker(PLAYER_ONE)}
-      />
-      <VersionMenuItem />
+      <View style={{ paddingTop: 40, alignSelf: 'stretch' }}>
+        <Heading>Settings</Heading>
+        <ColorMenuItem
+          text={'Opponent color'}
+          color={colorMap[PLAYER_TWO]}
+          onPress={() => showColorPicker(PLAYER_TWO)}
+        />
+        <ColorMenuItem
+          text={'Your color'}
+          color={colorMap[PLAYER_ONE]}
+          onPress={() => showColorPicker(PLAYER_ONE)}
+        />
+      </View>
+      <View style={{ paddingBottom: 20 }}>
+        <VersionMenuItem />
+      </View>
     </View>
   );
 }
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   borderBottom: {
     borderBottomColor: '#666',

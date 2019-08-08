@@ -46,7 +46,7 @@ function codePushStatusDidChange(status) {
 
     switch (status) {
       case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
-        dispatch(setLastCheckForUpdate(new Date()));
+        dispatch(setLastCheckForUpdate());
         console.log('Checking for update...');
         break;
 
@@ -95,6 +95,6 @@ function recordInstallDate() {
   return { type: INSTALL_DATE, value: new Date() };
 }
 
-function setLastCheckForUpdate(date) {
+function setLastCheckForUpdate(date = new Date()) {
   return { type: LAST_CHECK, value: date };
 }

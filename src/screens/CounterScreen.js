@@ -1,13 +1,20 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { CounterTile, ResetButton } from '../counters/components';
+import {
+  CounterTile,
+  ResetButton,
+  TempCounterView,
+} from '../counters/components';
 import { RollStartingPlayerButton } from '../startingPlayer/components';
 import { PLAYER_ONE, PLAYER_TWO } from '../constants';
 
 function CounterScreen() {
   return (
     <View style={styles.container}>
+      <View style={{ position: 'absolute', zIndex: 200, flexDirection: 'row' }}>
+        <TempCounterView />
+      </View>
       <CounterTile player={PLAYER_TWO} invert={true} />
       <View
         style={{

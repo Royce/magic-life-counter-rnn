@@ -7,7 +7,7 @@
     "clean-js": "watchman watch-del-all && rm yarn.lock && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "react": "16.8.3",
     "react-native": "0.59.8",
